@@ -33,7 +33,12 @@ class HealthFactory {
       _platformType == PlatformType.ANDROID
           ? _dataTypeKeysAndroid.contains(dataType)
           : _dataTypeKeysIOS.contains(dataType);
-
+          
+  /// check if HealthConnect is available on Android devices
+  Future<bool?> isHealthConnectAvailable() async {
+    if (_platformType != PlatformType.ANDROID) return null;
+    return await _channel.invokeMethod('isHealthConnectAvailable');
+  }
   /// Determines if the data types have been granted with the specified access rights.
   ///
   /// Returns:
