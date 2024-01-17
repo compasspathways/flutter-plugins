@@ -1340,8 +1340,8 @@ class HealthPlugin(private var channel: MethodChannel? = null) :
     }
 
     private fun isHealthConnectAvailable(call: MethodCall, result: Result) {
-        val isGranted = useHealthConnectIfAvailable && healthConnectAvailable
-        result?.success(isGranted)
+        val isAvailable = useHealthConnectIfAvailable && healthConnectAvailable
+        result?.success(isAvailable)
     }
 
     private fun hasPermissions(call: MethodCall, result: Result) {
